@@ -1,0 +1,98 @@
+[gd_scene load_steps=4 format=3 uid="uid://df6xaugct5rem"]
+
+[ext_resource type="Script" path="res://addons/emvent-system/editor/views/main_view.gd" id="1_xbjti"]
+[ext_resource type="Script" path="res://addons/emvent-system/editor/dialogs/dialog_unsaved_confirm.gd" id="2_k4fsi"]
+[ext_resource type="PackedScene" uid="uid://ihn8j8q4b03x" path="res://addons/emvent-system/editor/views/about_view.tscn" id="3_w3uku"]
+
+[node name="Control" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+script = ExtResource("1_xbjti")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="MenuBar" type="MenuBar" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="File" type="PopupMenu" parent="VBoxContainer/MenuBar"]
+item_count = 4
+item_0/text = "New"
+item_0/id = 0
+item_1/text = "Open"
+item_1/id = 1
+item_2/text = "Save"
+item_2/id = 2
+item_3/text = "Save As"
+item_3/id = 3
+
+[node name="Help" type="PopupMenu" parent="VBoxContainer/MenuBar"]
+item_count = 2
+item_0/text = "Documentation"
+item_0/id = 0
+item_1/text = "About"
+item_1/id = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="TabBar" type="TabBar" parent="VBoxContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+tab_close_display_policy = 1
+
+[node name="TabHolder" type="Control" parent="VBoxContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="UnsavedFileConfirmationDialog" type="AcceptDialog" parent="."]
+title = "Unsaved Changes"
+initial_position = 1
+ok_button_text = "Save"
+dialog_text = "You have unsaved changes.
+Would you like to save them?"
+script = ExtResource("2_k4fsi")
+
+[node name="AboutWindow" type="Window" parent="."]
+title = "About"
+initial_position = 2
+size = Vector2i(700, 500)
+visible = false
+transient = true
+unresizable = true
+
+[node name="About" parent="AboutWindow" instance=ExtResource("3_w3uku")]
+
+[node name="OpenFileDialog" type="FileDialog" parent="."]
+title = "Open Event File"
+size = Vector2i(275, 162)
+ok_button_text = "Open"
+file_mode = 0
+filters = PackedStringArray("*.tres ; Resource Files")
+
+[node name="SaveFileDialog" type="FileDialog" parent="."]
+title = "Save Event"
+ok_button_text = "Save"
+filters = PackedStringArray("*.tres ; Resource Files")
+
+[connection signal="index_pressed" from="VBoxContainer/MenuBar/File" to="." method="_on_file_menu_index_pressed"]
+[connection signal="index_pressed" from="VBoxContainer/MenuBar/Help" to="." method="_on_help_menu_index_pressed"]
+[connection signal="tab_changed" from="VBoxContainer/PanelContainer/VBoxContainer/TabBar" to="." method="_on_tab_bar_tab_changed"]
+[connection signal="tab_close_pressed" from="VBoxContainer/PanelContainer/VBoxContainer/TabBar" to="." method="_on_tab_bar_tab_close_pressed"]
+[connection signal="custom_action" from="UnsavedFileConfirmationDialog" to="." method="_on_confirm_dialog_action"]
+[connection signal="close_requested" from="AboutWindow" to="." method="_on_about_window_close_requested"]
+[connection signal="file_selected" from="OpenFileDialog" to="." method="_on_open_file_selected"]
+[connection signal="file_selected" from="SaveFileDialog" to="." method="_save_dialog_file_selected"]

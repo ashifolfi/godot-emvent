@@ -1,0 +1,59 @@
+[gd_scene load_steps=3 format=3 uid="uid://bpax3v8if2ir"]
+
+[ext_resource type="Script" path="res://addons/emvent-system/editor/components/command_editor.gd" id="1_g3iii"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_78jgh"]
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[node name="CommandEditor" type="PanelContainer"]
+custom_minimum_size = Vector2(400, 50)
+script = ExtResource("1_g3iii")
+
+[node name="Layout" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="Layout"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0.345098, 0.345098, 0.345098, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Layout/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="hideBtn" type="Button" parent="Layout/ColorRect/HBoxContainer"]
+layout_mode = 2
+text = "Hide
+"
+
+[node name="upBtn" type="Button" parent="Layout/ColorRect/HBoxContainer"]
+layout_mode = 2
+text = "^
+"
+
+[node name="remBtn" type="Button" parent="Layout/ColorRect/HBoxContainer"]
+layout_mode = 2
+text = "X"
+
+[node name="dwnBtn" type="Button" parent="Layout/ColorRect/HBoxContainer"]
+layout_mode = 2
+text = "v"
+
+[node name="CommandName" type="Label" parent="Layout/ColorRect/HBoxContainer"]
+layout_mode = 2
+text = "Command"
+label_settings = SubResource("LabelSettings_78jgh")
+
+[node name="FieldContainer" type="VBoxContainer" parent="Layout"]
+layout_mode = 2
+
+[connection signal="pressed" from="Layout/ColorRect/HBoxContainer/hideBtn" to="." method="_on_hide_btn_pressed"]
+[connection signal="pressed" from="Layout/ColorRect/HBoxContainer/upBtn" to="." method="_on_up_btn_pressed"]
+[connection signal="pressed" from="Layout/ColorRect/HBoxContainer/remBtn" to="." method="_on_rem_btn_pressed"]
+[connection signal="pressed" from="Layout/ColorRect/HBoxContainer/dwnBtn" to="." method="_on_dwn_btn_pressed"]

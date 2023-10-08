@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="Emvent" load_steps=9 format=3]
+
+[ext_resource type="Script" path="res://addons/emvent-system/commands/command_print.gd" id="1_3uqq6"]
+[ext_resource type="Script" path="res://addons/emvent-system/commands/script_command.gd" id="2_ocgox"]
+[ext_resource type="Script" path="res://addons/emvent-system/commands/wait_frame_command.gd" id="2_qi0t3"]
+[ext_resource type="Script" path="res://addons/emvent-system/event_resource.gd" id="3_bsrod"]
+
+[sub_resource type="Resource" id="Resource_0fq2l"]
+script = ExtResource("1_3uqq6")
+contents = "Testing a standard print event"
+
+[sub_resource type="Resource" id="Resource_d8qup"]
+script = ExtResource("1_3uqq6")
+contents = "Heading into a wait for 60 frames (1 second)"
+
+[sub_resource type="Resource" id="Resource_k2opr"]
+script = ExtResource("2_qi0t3")
+wait_time = 60
+
+[sub_resource type="Resource" id="Resource_k3rbc"]
+script = ExtResource("2_ocgox")
+expression = "var a = 20
+print(a + 40)"
+
+[resource]
+script = ExtResource("3_bsrod")
+name = "Testing Event"
+commands = [SubResource("Resource_0fq2l"), SubResource("Resource_d8qup"), SubResource("Resource_k2opr"), SubResource("Resource_k3rbc")]

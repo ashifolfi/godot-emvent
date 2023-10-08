@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="48"
+   height="48"
+   viewBox="0 0 12.7 12.7"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.2.2 (732a01da63, 2022-12-09)"
+   sodipodi:docname="EmventLogo.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="8"
+     inkscape:cx="40.1875"
+     inkscape:cy="27.9375"
+     inkscape:window-width="1366"
+     inkscape:window-height="715"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="g1946" />
+  <defs
+     id="defs2">
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="1.0428233 : 10.583333 : 1"
+       inkscape:vp_y="3.15949 : 1009.8778 : 1"
+       inkscape:vp_z="5.2761567 : 10.583333 : 1"
+       inkscape:persp3d-origin="3.15949 : 9.8777778 : 1"
+       id="perspective795" />
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath1939">
+      <path
+         style="display:inline;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.3;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
+         d="m 1.2111237,3.5987466 1.80952,2.3e-5 L 2.8424872,2.7475955 3.9931737,2.9875721 4.039946,4.2111938 H 0.14569711 L 0.36047809,3.016758 1.376488,2.7057779 Z"
+         id="path1941"
+         sodipodi:nodetypes="ccccccccc" />
+    </clipPath>
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <g
+       id="g1946"
+       transform="matrix(2.9007596,0,0,2.9007596,0.21005876,-0.03423969)"
+       style="fill:#ffffff">
+      <rect
+         style="display:inline;fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:0.2;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
+         id="rect811"
+         width="3.1979914"
+         height="0.82477021"
+         x="0.51767099"
+         y="3.2488425"
+         ry="0.21047476"
+         clip-path="url(#clipPath1939)"
+         transform="translate(0,-0.09354433)" />
+      <path
+         id="rect621"
+         style="display:inline;fill:#ffffff;stroke-width:2.3399;stroke-linejoin:bevel;paint-order:fill markers stroke"
+         d="M 2.4725307,1.3674653 2.9211374,3.5053257 C 2.9720339,3.747876 2.7216186,3.7314611 2.4737859,3.7314611 H 1.7580235 c -0.2478327,0 -0.491029,0.017818 -0.4473515,-0.2261354 L 1.7075164,1.3674653 Z"
+         sodipodi:nodetypes="csccscc" />
+      <circle
+         style="display:inline;fill:#ffffff;stroke-width:2.64571;stroke-linejoin:bevel;paint-order:fill markers stroke"
+         id="path675"
+         cx="2.1166668"
+         cy="1.2321726"
+         r="0.91047007" />
+    </g>
+  </g>
+</svg>

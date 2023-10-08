@@ -1,0 +1,128 @@
+[gd_scene load_steps=4 format=3 uid="uid://ihn8j8q4b03x"]
+
+[ext_resource type="Script" path="res://addons/emvent-system/editor/views/about_view.gd" id="1_4x7ay"]
+[ext_resource type="Texture2D" uid="uid://cyxil0dvgsgop" path="res://addons/emvent-system/res/EmventLogo.png" id="1_fntdh"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_wyq8r"]
+font_size = 48
+
+[node name="About" type="Panel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4x7ay")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+texture = ExtResource("1_fntdh")
+expand_mode = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="Version" type="Label" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "eMVent v1.0"
+label_settings = SubResource("LabelSettings_wyq8r")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+bbcode_enabled = true
+text = "An RPG Maker inspired event system for Godot
+
+(C) 2023 K. 'ashi' J."
+fit_content = true
+autowrap_mode = 0
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="TabContainer" type="TabContainer" parent="VBoxContainer/MarginContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Authors" type="Control" parent="VBoxContainer/MarginContainer2/TabContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer2/TabContainer/Authors"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="AuthorList" type="VBoxContainer" parent="VBoxContainer/MarginContainer2/TabContainer/Authors/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="License" type="Control" parent="VBoxContainer/MarginContainer2/TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer2/TabContainer/License"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="LicenseText" type="RichTextLabel" parent="VBoxContainer/MarginContainer2/TabContainer/License/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="MarginContainer3" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer3"]
+layout_mode = 2
+alignment = 1
+
+[node name="Button" type="Button" parent="VBoxContainer/MarginContainer3/HBoxContainer"]
+layout_mode = 2
+text = "Close"
+
+[connection signal="pressed" from="VBoxContainer/MarginContainer3/HBoxContainer/Button" to="." method="_on_close_pressed"]

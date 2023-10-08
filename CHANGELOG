@@ -1,0 +1,7 @@
+# v1.0 - First Release
+Features:
+- List based editor with multi file support
+- Automatic field editor generation
+- Extendable Command System
+- Full integration with Godot Resource/Node System
+- Easy to use event runner class

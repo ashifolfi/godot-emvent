@@ -1,0 +1,5 @@
+# Godot 4+ specific ignores
+.godot/
+
+# ignore these specific items that I don't want in the plugin repo
+addons/script-ide/
