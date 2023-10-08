@@ -16,6 +16,9 @@ func _process_event():
 	# skip over comment commands without wasting tics
 	while event_data.commands[event_cmd_index] is CommentEventCommand:
 		event_cmd_index += 1
+		if event_cmd_index >= event_data.commands.size():
+			event_data = null
+			return
 	
 	if event_data.commands[event_cmd_index].execute_command() > 0:
 		event_cmd_index += 1
