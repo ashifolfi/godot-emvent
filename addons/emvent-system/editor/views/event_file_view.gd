@@ -102,6 +102,7 @@ func _on_command_move_requested(direction, index):
 		passage.commands.insert(index + 1, cedit_instance.command)
 	
 	is_modified = true
+	file_modified.emit()
 
 func _on_command_remove_requested(index):
 	var cedit_instance = command_list.get_child(index)
