@@ -1,28 +1,76 @@
-[gd_resource type="Resource" script_class="Emvent" load_steps=9 format=3 uid="uid://di7elk83hjblo"]
+[gd_resource type="Resource" script_class="Emvent" load_steps=21 format=3 uid="uid://cqf6jiv0x5fjp"]
 
 [ext_resource type="Script" path="res://addons/emvent-system/commands/command_print.gd" id="1_3uqq6"]
 [ext_resource type="Script" path="res://addons/emvent-system/commands/script_command.gd" id="2_ocgox"]
 [ext_resource type="Script" path="res://addons/emvent-system/commands/wait_frame_command.gd" id="2_qi0t3"]
 [ext_resource type="Script" path="res://addons/emvent-system/event_resource.gd" id="3_bsrod"]
+[ext_resource type="Script" path="res://addons/emvent-system/commands/comment_command.gd" id="4_nodtk"]
 
-[sub_resource type="Resource" id="Resource_0fq2l"]
+[sub_resource type="Resource" id="Resource_hxg2w"]
 script = ExtResource("1_3uqq6")
-contents = "Testing a standard print event"
+contents = "Starting Event Runner Test..."
 
-[sub_resource type="Resource" id="Resource_d8qup"]
+[sub_resource type="Resource" id="Resource_5jpuo"]
 script = ExtResource("1_3uqq6")
-contents = "Heading into a wait for 60 frames (1 second)"
+contents = "Waiting 20 frames..."
 
-[sub_resource type="Resource" id="Resource_k2opr"]
+[sub_resource type="Resource" id="Resource_kb1a5"]
 script = ExtResource("2_qi0t3")
-wait_time = 60
+frame_count = 20
 
-[sub_resource type="Resource" id="Resource_k3rbc"]
+[sub_resource type="Resource" id="Resource_34hx5"]
 script = ExtResource("2_ocgox")
-expression = "var a = 20
-print(a + 40)"
+expression = "print(\"script expression\")
+var a = 0
+while a < 4:
+	print(a)
+	a += 1"
+
+[sub_resource type="Resource" id="Resource_4x34i"]
+script = ExtResource("4_nodtk")
+contents = "below are a bunch of comments that shouldn't waste any frames"
+
+[sub_resource type="Resource" id="Resource_ji7m3"]
+script = ExtResource("4_nodtk")
+contents = ""
+
+[sub_resource type="Resource" id="Resource_jiw7e"]
+script = ExtResource("4_nodtk")
+contents = ""
+
+[sub_resource type="Resource" id="Resource_xvn80"]
+script = ExtResource("4_nodtk")
+contents = ""
+
+[sub_resource type="Resource" id="Resource_k5fj2"]
+script = ExtResource("4_nodtk")
+contents = ""
+
+[sub_resource type="Resource" id="Resource_ly7i4"]
+script = ExtResource("4_nodtk")
+contents = ""
+
+[sub_resource type="Resource" id="Resource_k474w"]
+script = ExtResource("4_nodtk")
+contents = ""
+
+[sub_resource type="Resource" id="Resource_vfe2c"]
+script = ExtResource("4_nodtk")
+contents = ""
+
+[sub_resource type="Resource" id="Resource_p6lru"]
+script = ExtResource("4_nodtk")
+contents = ""
+
+[sub_resource type="Resource" id="Resource_sqcy6"]
+script = ExtResource("4_nodtk")
+contents = ""
+
+[sub_resource type="Resource" id="Resource_624y2"]
+script = ExtResource("1_3uqq6")
+contents = "This should display immediately after the script finishes"
 
 [resource]
 script = ExtResource("3_bsrod")
-name = "Testing Event"
-commands = [SubResource("Resource_0fq2l"), SubResource("Resource_d8qup"), SubResource("Resource_k2opr"), SubResource("Resource_k3rbc")]
+name = "Event Runner Test"
+commands = [SubResource("Resource_hxg2w"), SubResource("Resource_5jpuo"), SubResource("Resource_kb1a5"), SubResource("Resource_34hx5"), SubResource("Resource_4x34i"), SubResource("Resource_ji7m3"), SubResource("Resource_jiw7e"), SubResource("Resource_xvn80"), SubResource("Resource_k5fj2"), SubResource("Resource_ly7i4"), SubResource("Resource_k474w"), SubResource("Resource_vfe2c"), SubResource("Resource_p6lru"), SubResource("Resource_sqcy6"), SubResource("Resource_624y2")]

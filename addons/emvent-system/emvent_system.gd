@@ -13,13 +13,16 @@ func _process(delta):
 		_process_event()
 
 func _process_event():
-	if event_cmd_index < event_data.commands.size():
-		if event_data.commands[event_cmd_index].execute_command() > 0:
-			event_cmd_index += 1
-	else:
+	# skip over comment commands without wasting tics
+	while event_data.commands[event_cmd_index] is CommentEventCommand:
+		event_cmd_index += 1
+	
+	if event_data.commands[event_cmd_index].execute_command() > 0:
+		event_cmd_index += 1
+	
+	if event_cmd_index >= event_data.commands.size():
 		# clear event_data when we're done
 		event_data = null
-
 
 func is_running() -> bool:
 	if event_data == null:
