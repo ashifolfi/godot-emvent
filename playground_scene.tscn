@@ -13,5 +13,4 @@ grow_vertical = 2
 theme = ExtResource("1_qkffc")
 
 [node name="Control" parent="." instance=ExtResource("2_sfat3")]
-layout_mode = 0
-anchors_preset = 0
+layout_mode = 1
