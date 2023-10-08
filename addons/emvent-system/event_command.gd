@@ -1,12 +1,14 @@
 class_name EmventCommand extends Resource
 
 ## Human Readable/Friendly name of the command
-var command_name = "Command"
+var cmd_name = "Command"
 ## A summary of the use of the command or what it does
-var command_desc = "The base class for all Passage Commands, only exists to be extended."
+var cmd_description = "The base class for all Passage Commands, only exists to be extended."
+## The category this command is stored in
+var cmd_category = "Custom"
 
 ## Returns a list where each element is an array containing the name and field type of the parameter
-func _get_parameters():
+func get_properties():
 	return {}
 
 ## The code that's ran when the event is processed by the runner

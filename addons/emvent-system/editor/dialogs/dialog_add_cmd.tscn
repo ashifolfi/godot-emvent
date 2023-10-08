@@ -1,7 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://c0rrtqurxbyqg"]
+[gd_scene load_steps=3 format=3 uid="uid://c0rrtqurxbyqg"]
 
 [ext_resource type="Script" path="res://addons/emvent-system/editor/dialogs/dialog_add_cmd.gd" id="1_ywopo"]
-[ext_resource type="Texture2D" uid="uid://d2senho41oxcj" path="res://addons/emvent-system/res/CommandIcon.svg" id="2_2bpl5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_scwqc"]
 bg_color = Color(0.179688, 0.179688, 0.179688, 1)
@@ -36,16 +35,9 @@ theme_override_constants/margin_bottom = 5
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 
-[node name="cmdList" type="ItemList" parent="MarginContainer/VBoxContainer"]
+[node name="cmdListT" type="Tree" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-item_count = 3
-item_0/text = "Print"
-item_0/icon = ExtResource("2_2bpl5")
-item_1/text = "Script"
-item_1/icon = ExtResource("2_2bpl5")
-item_2/text = "Wait"
-item_2/icon = ExtResource("2_2bpl5")
 
 [node name="cmdInfo" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 100)
@@ -53,5 +45,5 @@ layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_scwqc")
 
 [connection signal="confirmed" from="." to="." method="_on_confirmed"]
-[connection signal="item_activated" from="MarginContainer/VBoxContainer/cmdList" to="." method="_on_command_activated"]
-[connection signal="item_selected" from="MarginContainer/VBoxContainer/cmdList" to="." method="_on_command_selected"]
+[connection signal="item_activated" from="MarginContainer/VBoxContainer/cmdListT" to="." method="_on_cmd_list_t_item_activated"]
+[connection signal="item_selected" from="MarginContainer/VBoxContainer/cmdListT" to="." method="_on_cmd_list_t_item_selected"]

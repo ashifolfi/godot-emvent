@@ -5,13 +5,12 @@ class_name ScriptEventCommand extends EmventCommand
 @export var expression: String = ""
 
 func _init():
-	# Friendly name of your command
-	command_name = "Script"
-	# Short Description/Usage of your command
-	command_desc = "Runs the provided GDScript code in a barebones script object."
+	cmd_name = "Script"
+	cmd_description = "Runs the provided GDScript code in a barebones script object."
+	cmd_category = "Utility"
 
 # used by the event editor to know what properties to display
-func _get_parameters():
+func get_properties():
 	return [
 		["expression", "MultilineString"]
 	]

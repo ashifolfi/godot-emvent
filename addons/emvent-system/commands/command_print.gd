@@ -4,10 +4,11 @@ class_name EmventCommandPrint extends EmventCommand
 @export var contents: String
 
 func _init():
-	command_name = "Print"
-	command_desc = "Prints a message to the console."
+	cmd_name = "Print"
+	cmd_description = "Prints a message to the console."
+	cmd_category = "Utility"
 
-func _get_parameters():
+func get_properties():
 	return [
 		["contents", "String"]
 	]

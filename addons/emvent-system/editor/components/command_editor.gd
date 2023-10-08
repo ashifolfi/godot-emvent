@@ -29,11 +29,11 @@ func _ready():
 	$RCMenu.add_separator("", 2)
 	$RCMenu.add_icon_item(get_theme_icon("Remove", "EditorIcons"), "Remove", 3)
 	
-	command_name.text = command.command_name
+	command_name.text = command.cmd_name
 	_populate_field_container()
 
 func _populate_field_container() -> void:
-	for prop_info in command._get_parameters():
+	for prop_info in command.get_properties():
 		var prop_layout = HBoxContainer.new()
 		var prop_label = Label.new()
 		var prop_widget

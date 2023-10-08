@@ -5,19 +5,21 @@
 # class_name NewEventCommand 
 extends EmventCommand
 
-# Place your parameters here formatted like so
+# Place your properties here formatted like so
 # @export var <name>: <type> = <default_value>
 
 func _init():
 	# Friendly name of your command
-	command_name = "New Command"
+	cmd_name = "New Command"
 	# Short Description/Usage of your command
-	command_desc = "A command that does things that are cool."
+	cmd_description = "A command that does things that are cool."
+	# The category your command is shown under in the editor
+	cmd_category = "Custom"
 
 # used by the event editor to know what properties to display
-func _get_parameters():
-	# as you add parameters add the info to this list
-	# parameters are formatted like so
+func get_properties():
+	# as you add propertie  add the info to this list
+	# properties are formatted like so
 	# ["<variable name>", "<type>"] (without the <>)
 	return []
 
