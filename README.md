@@ -16,7 +16,7 @@ More are being worked on for future updates!
 
 ## Installation
 To install the addon currently, download the repository as a zip file and copy the following folders to your project:
-- `script-templates/`
+- `script_templates/`
 - `addons/`
 
 This will install all the required addon files alongside the script template for quickly creating new commands.
