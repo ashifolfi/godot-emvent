@@ -1,9 +1,7 @@
 @tool
 extends MarginContainer
 
-# TODO: this file is messy and unorganized
-
-var open_files: Dictionary
+var open_files: Array
 
 @onready var tab_bar = $VBoxContainer/PanelContainer/VBoxContainer/TabBar
 @onready var tab_box = $VBoxContainer/PanelContainer/VBoxContainer/TabHolder
@@ -24,8 +22,8 @@ func create_tab(evdata: Emvent, path: String = ""):
 	tab_box.add_child(new_tab)
 	
 	# set connections
-	new_tab.file_modified.connect(_on_passage_modified)
-	new_tab.file_saved.connect(_on_passage_saved)
+	new_tab.file_modified.connect(_on_event_modified)
+	new_tab.file_saved.connect(_on_event_saved)
 	
 	# set tab name
 	tab_bar.add_tab(new_tab.passage.name)
@@ -36,13 +34,13 @@ func create_tab(evdata: Emvent, path: String = ""):
 func _on_new_file() -> void:
 	create_tab(Emvent.new())
 
-func _on_passage_saved() -> void:
-	var passage = tab_box.get_child(tab_bar.current_tab).passage
-	tab_bar.set_tab_title(tab_bar.current_tab, passage.name)
+func _on_event_saved() -> void:
+	var event_data = tab_box.get_child(tab_bar.current_tab).passage
+	tab_bar.set_tab_title(tab_bar.current_tab, event_data.name)
 
-func _on_passage_modified() -> void:
-	var passage = tab_box.get_child(tab_bar.current_tab).passage
-	tab_bar.set_tab_title(tab_bar.current_tab, passage.name + "(*)")
+func _on_event_modified() -> void:
+	var event_data = tab_box.get_child(tab_bar.current_tab).passage
+	tab_bar.set_tab_title(tab_bar.current_tab, event_data.name + "(*)")
 
 # Helper functions
 func get_current_tab():
@@ -53,11 +51,7 @@ func get_current_tab():
 
 # Connections
 func _on_tab_bar_tab_changed(tab):
-	for child in tab_box.get_children():
-		child.visible = false
-	
-	if tab_box.get_child(tab):
-		tab_box.get_child(tab).visible = true
+	tab_box.current_tab = tab
 
 func _on_tab_bar_tab_close_pressed(tab):
 	if tab_box.get_child(tab).is_modified:
@@ -74,13 +68,13 @@ func _on_tab_bar_tab_close_pressed(tab):
 
 func _on_confirm_dialog_action(action: StringName) -> void:
 	if action == "save":
-		print("Saving Event...")
+		#print("Saving Event...")
 		get_current_tab().save_passage()
 	
-	# HACK: this closes the current tab instead of the requested tab.
+	# HACK?: this closes the current tab instead of the requested tab.
 	# this isn't much of an issue though as the close button only appears on
 	# the currently active tab meaning this should always close the right one.
-	print("Closing tab...")
+	#print("Closing tab...")
 	
 	var tab = get_current_tab()
 	tab_box.remove_child(tab)
@@ -92,6 +86,7 @@ func _save_file_pressed(save_as: bool = false):
 	if save_as or get_current_tab().path.is_empty():
 		$SaveFileDialog.popup_centered()
 		return
+	
 	get_current_tab().save_passage()
 
 func _save_dialog_file_selected(path):
@@ -122,4 +117,5 @@ func _on_open_file_selected(path):
 	if res_data is Emvent:
 		create_tab(res_data, path)
 	else:
-		print("Is not event data")
+		$ErrorWindow.dialog_text = "Selected file is not an Emvent Event Resource.\nSelect a different file"
+		$ErrorWindow.popup_centered()

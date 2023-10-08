@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://c0rrtqurxbyqg"]
+[gd_scene load_steps=4 format=3 uid="uid://c0rrtqurxbyqg"]
 
 [ext_resource type="Script" path="res://addons/emvent-system/editor/dialogs/dialog_add_cmd.gd" id="1_ywopo"]
+[ext_resource type="Texture2D" uid="uid://d2senho41oxcj" path="res://addons/emvent-system/res/CommandIcon.svg" id="2_2bpl5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_scwqc"]
 bg_color = Color(0.179688, 0.179688, 0.179688, 1)
@@ -11,7 +12,6 @@ position = Vector2i(0, 36)
 size = Vector2i(500, 500)
 visible = true
 unresizable = true
-always_on_top = true
 ok_button_text = "Add"
 dialog_hide_on_ok = false
 script = ExtResource("1_ywopo")
@@ -39,6 +39,13 @@ layout_mode = 2
 [node name="cmdList" type="ItemList" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+item_count = 3
+item_0/text = "Print"
+item_0/icon = ExtResource("2_2bpl5")
+item_1/text = "Script"
+item_1/icon = ExtResource("2_2bpl5")
+item_2/text = "Wait"
+item_2/icon = ExtResource("2_2bpl5")
 
 [node name="cmdInfo" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 100)

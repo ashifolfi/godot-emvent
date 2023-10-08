@@ -2,7 +2,8 @@
 
 [ext_resource type="Script" path="res://addons/emvent-system/editor/views/event_file_view.gd" id="1_2deqn"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cy8f1"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gn5rx"]
+bg_color = Color(0.113281, 0.132813, 0.160156, 1)
 
 [node name="PanelContainer" type="PanelContainer"]
 anchors_preset = 15
@@ -20,7 +21,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
-text = "Passage Name
+text = "Event Name: 
 "
 
 [node name="LineEdit" type="LineEdit" parent="VBoxContainer/HBoxContainer"]
@@ -37,25 +38,20 @@ text = "Add Command"
 layout_mode = 2
 theme_override_constants/separation = 2
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="ItemList" type="ItemList" parent="VBoxContainer/HBoxContainer2"]
-custom_minimum_size = Vector2(200, 0)
-layout_mode = 2
-
-[node name="VSeparator" type="VSeparator" parent="VBoxContainer/HBoxContainer2"]
-layout_mode = 2
-theme_override_constants/separation = 10
-theme_override_styles/separator = SubResource("StyleBoxEmpty_cy8f1")
-
-[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/HBoxContainer2"]
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_gn5rx")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer2/PanelContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/PanelContainer"]
 layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="CommandList" type="VBoxContainer" parent="VBoxContainer/PanelContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="SaveErrorBox" type="AcceptDialog" parent="."]
 

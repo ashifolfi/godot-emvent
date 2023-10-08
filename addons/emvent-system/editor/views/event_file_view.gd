@@ -14,7 +14,7 @@ signal file_saved
 
 # UI Elements
 @onready var form_name_field = $VBoxContainer/HBoxContainer/LineEdit
-@onready var command_list = $VBoxContainer/HBoxContainer2/PanelContainer/VBoxContainer
+@onready var command_list = $VBoxContainer/PanelContainer/ScrollContainer/CommandList
 
 func _ready():
 	# make sure we always have a valid file
@@ -109,6 +109,8 @@ func _on_command_remove_requested(index):
 	passage.commands.remove_at(index)
 	
 	is_modified = true
+	file_modified.emit()
 
 func _on_command_modified():
 	is_modified = true
+	file_modified.emit()

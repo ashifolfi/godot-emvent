@@ -43,20 +43,27 @@ item_0/id = 0
 item_1/text = "About"
 item_1/id = 1
 
-[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer"]
+[node name="PanelContainer" type="Panel" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/PanelContainer"]
-layout_mode = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
 
 [node name="TabBar" type="TabBar" parent="VBoxContainer/PanelContainer/VBoxContainer"]
 layout_mode = 2
 tab_close_display_policy = 1
 
-[node name="TabHolder" type="Control" parent="VBoxContainer/PanelContainer/VBoxContainer"]
+[node name="TabHolder" type="TabContainer" parent="VBoxContainer/PanelContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+tabs_visible = false
 
 [node name="UnsavedFileConfirmationDialog" type="AcceptDialog" parent="."]
 title = "Unsaved Changes"
@@ -77,16 +84,20 @@ unresizable = true
 [node name="About" parent="AboutWindow" instance=ExtResource("3_w3uku")]
 
 [node name="OpenFileDialog" type="FileDialog" parent="."]
-title = "Open Event File"
-size = Vector2i(275, 162)
+title = "Open a File"
+size = Vector2i(500, 500)
 ok_button_text = "Open"
 file_mode = 0
 filters = PackedStringArray("*.tres ; Resource Files")
 
 [node name="SaveFileDialog" type="FileDialog" parent="."]
 title = "Save Event"
+size = Vector2i(500, 500)
 ok_button_text = "Save"
 filters = PackedStringArray("*.tres ; Resource Files")
+
+[node name="ErrorWindow" type="AcceptDialog" parent="."]
+title = "Error"
 
 [connection signal="index_pressed" from="VBoxContainer/MenuBar/File" to="." method="_on_file_menu_index_pressed"]
 [connection signal="index_pressed" from="VBoxContainer/MenuBar/Help" to="." method="_on_help_menu_index_pressed"]

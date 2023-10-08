@@ -1,9 +1,11 @@
+@tool
 extends PanelContainer
 
 @export var command: EmventCommand
 
-@onready var field_container = $Layout/FieldContainer
-@onready var command_name = $Layout/ColorRect/HBoxContainer/CommandName
+@onready var field_container = $HBoxContainer/PanelContainer/Layout/FieldContainer
+@onready var command_name = $HBoxContainer/PanelContainer/Layout/PanelContainer/HBoxContainer/CommandName
+@onready var hide_btn: TextureButton = $HBoxContainer/PanelContainer/Layout/PanelContainer/HBoxContainer/hideBtn
 
 signal move_command
 signal remove_command
@@ -15,6 +17,17 @@ func _ready():
 		push_warning("No command was provided before ready! Destroying element...")
 		queue_free()
 		return
+	
+	# set editor icon textures
+	hide_btn.texture_normal = get_theme_icon("GuiVisibilityVisible", "EditorIcons")
+	hide_btn.texture_pressed = get_theme_icon("GuiVisibilityHidden", "EditorIcons")
+	
+	# populate right click menu
+	$RCMenu.clear()
+	$RCMenu.add_icon_item(get_theme_icon("ArrowUp", "EditorIcons"), "Move Up", 0)
+	$RCMenu.add_icon_item(get_theme_icon("ArrowDown", "EditorIcons"), "Move Down", 1)
+	$RCMenu.add_separator("", 2)
+	$RCMenu.add_icon_item(get_theme_icon("Remove", "EditorIcons"), "Remove", 3)
 	
 	command_name.text = command.command_name
 	_populate_field_container()
@@ -44,6 +57,23 @@ func _populate_field_container() -> void:
 		prop_layout.add_child(prop_widget)
 		field_container.add_child(prop_layout)
 
+func _on_hide_btn_toggled(button_pressed):
+	field_container.visible = !button_pressed
+
+func _on_panel_container_gui_input(event):
+	# right click event opens a pop up with some actions
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_RIGHT:
+			$RCMenu.position = event.global_position
+			$RCMenu.popup()
+
+func _on_rcmenu_index_pressed(index):
+	match index:
+		0: move_command.emit("up", get_index())
+		1: move_command.emit("down", get_index())
+		3: remove_command.emit(get_index())
+
+
 # Field Creation Functions
 # TODO: improve the event sheet UI greatly
 func _create_line_edit(property: String):
@@ -60,7 +90,7 @@ func _create_line_edit(property: String):
 func _create_multi_line_edit(property: String):
 	var prop_textedit = TextEdit.new()
 	
-	prop_textedit.custom_minimum_size = Vector2(0, 64)
+	prop_textedit.custom_minimum_size = Vector2(0, 72)
 	prop_textedit.text = command.get(property)
 	prop_textedit.text_changed.connect(func(): 
 		command.set(property, prop_textedit.text)
@@ -83,21 +113,3 @@ func _create_int_spinbox(property: String):
 	prop_spinbox.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	
 	return prop_spinbox
-
-
-func _on_hide_btn_pressed():
-	if field_container.visible:
-		field_container.visible = false
-		$Layout/ColorRect/HBoxContainer/hideBtn.text = "Show"
-	else:
-		field_container.visible = true
-		$Layout/ColorRect/HBoxContainer/hideBtn.text = "Hide"
-
-func _on_dwn_btn_pressed():
-	move_command.emit("down", get_index())
-
-func _on_up_btn_pressed():
-	move_command.emit("up", get_index())
-
-func _on_rem_btn_pressed():
-	remove_command.emit(get_index())

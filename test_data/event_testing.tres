@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Emvent" load_steps=7 format=3]
+[gd_resource type="Resource" script_class="Emvent" load_steps=7 format=3 uid="uid://oq53xciojbmc"]
 
 [ext_resource type="Script" path="res://addons/emvent-system/commands/command_print.gd" id="1_kj1mn"]
 [ext_resource type="Script" path="res://addons/emvent-system/commands/script_command.gd" id="2_q42om"]
