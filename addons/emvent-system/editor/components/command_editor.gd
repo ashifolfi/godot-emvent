@@ -15,6 +15,7 @@ var category_colors = {
 signal move_command
 signal remove_command
 signal command_modified
+signal drag_started
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -82,11 +83,15 @@ func _on_hide_btn_toggled(button_pressed):
 	command_modified.emit()
 
 func _on_panel_container_gui_input(event):
-	# right click event opens a pop up with some actions
 	if event is InputEventMouseButton:
+		# right click event opens a pop up with some actions
 		if event.button_index == MOUSE_BUTTON_RIGHT:
 			$RCMenu.position = event.global_position
 			$RCMenu.popup()
+		
+		# single click and hold triggers drag event
+		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+			drag_started.emit(get_index())
 
 func _on_rcmenu_index_pressed(index):
 	match index:

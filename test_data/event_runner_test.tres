@@ -45,11 +45,6 @@ script = ExtResource("4_nodtk")
 contents = ""
 visible = false
 
-[sub_resource type="Resource" id="Resource_xvn80"]
-script = ExtResource("4_nodtk")
-contents = ""
-visible = false
-
 [sub_resource type="Resource" id="Resource_k5fj2"]
 script = ExtResource("4_nodtk")
 contents = ""
@@ -66,6 +61,11 @@ contents = ""
 visible = false
 
 [sub_resource type="Resource" id="Resource_vfe2c"]
+script = ExtResource("4_nodtk")
+contents = ""
+visible = false
+
+[sub_resource type="Resource" id="Resource_xvn80"]
 script = ExtResource("4_nodtk")
 contents = ""
 visible = false
@@ -88,4 +88,4 @@ visible = true
 [resource]
 script = ExtResource("3_bsrod")
 name = "Event Runner Test"
-commands = [SubResource("Resource_hxg2w"), SubResource("Resource_5jpuo"), SubResource("Resource_kb1a5"), SubResource("Resource_34hx5"), SubResource("Resource_4x34i"), SubResource("Resource_ji7m3"), SubResource("Resource_jiw7e"), SubResource("Resource_xvn80"), SubResource("Resource_k5fj2"), SubResource("Resource_ly7i4"), SubResource("Resource_k474w"), SubResource("Resource_vfe2c"), SubResource("Resource_p6lru"), SubResource("Resource_sqcy6"), SubResource("Resource_624y2")]
+commands = [SubResource("Resource_hxg2w"), SubResource("Resource_5jpuo"), SubResource("Resource_kb1a5"), SubResource("Resource_34hx5"), SubResource("Resource_4x34i"), SubResource("Resource_ji7m3"), SubResource("Resource_jiw7e"), SubResource("Resource_k5fj2"), SubResource("Resource_ly7i4"), SubResource("Resource_k474w"), SubResource("Resource_vfe2c"), SubResource("Resource_xvn80"), SubResource("Resource_p6lru"), SubResource("Resource_sqcy6"), SubResource("Resource_624y2")]

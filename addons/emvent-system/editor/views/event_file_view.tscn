@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://b6wywqeb125g1"]
+[gd_scene load_steps=4 format=3 uid="uid://b6wywqeb125g1"]
 
 [ext_resource type="Script" path="res://addons/emvent-system/editor/views/event_file_view.gd" id="1_2deqn"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gn5rx"]
 bg_color = Color(0.113281, 0.132813, 0.160156, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rbt4m"]
 
 [node name="PanelContainer" type="PanelContainer"]
 anchors_preset = 15
@@ -48,12 +50,25 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_gn5rx")
 layout_mode = 2
 horizontal_scroll_mode = 0
 
-[node name="CommandList" type="VBoxContainer" parent="VBoxContainer/PanelContainer/ScrollContainer"]
+[node name="ListHolder" type="PanelContainer" parent="VBoxContainer/PanelContainer/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_rbt4m")
+
+[node name="CommandList" type="VBoxContainer" parent="VBoxContainer/PanelContainer/ScrollContainer/ListHolder"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="DragOverlay" type="ColorRect" parent="VBoxContainer/PanelContainer/ScrollContainer/ListHolder"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0, 0.533333, 1, 0)
 
 [node name="SaveErrorBox" type="AcceptDialog" parent="."]
 
 [connection signal="text_changed" from="VBoxContainer/HBoxContainer/LineEdit" to="." method="_on_passage_name_change"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/Button" to="." method="_on_add_command_pressed"]
+[connection signal="gui_input" from="VBoxContainer/PanelContainer/ScrollContainer/ListHolder/DragOverlay" to="." method="_on_drag_overlay_gui_event"]
