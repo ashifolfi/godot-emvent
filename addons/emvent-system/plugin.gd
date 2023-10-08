@@ -26,6 +26,7 @@ func _exit_tree():
 
 func _handles(object):
 	if object is Emvent:
+		main_view_instance.create_tab(object, object.resource_path)
 		return true
 	else:
 		return false
