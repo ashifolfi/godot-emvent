@@ -5,8 +5,8 @@ const AUTHORS = "res://addons/emvent-system/AUTHORS.txt"
 const LICENSE = "res://addons/emvent-system/LICENSE.txt"
 
 func _ready():
-	# TODO: Move this to another place
-	%Version.text = %Version.text.format({"v": "v1.0"})
+	var vinf = load("res://addons/emvent-system/emvent_version.gd").new()
+	%Version.text = vinf.get_version_string()
 	
 	_populate_authors()
 	_populate_license()
