@@ -7,6 +7,9 @@ var cmd_description = "The base class for all Passage Commands, only exists to b
 ## The category this command is stored in
 var cmd_category = "Custom"
 
+## Used by the editor to maintain command collapse state
+@export var visible: bool = true
+
 ## Returns a list where each element is an array containing the name and field type of the parameter
 func get_properties():
 	return {}

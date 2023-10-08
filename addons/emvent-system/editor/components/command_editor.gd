@@ -30,7 +30,9 @@ func _ready():
 	$RCMenu.add_icon_item(get_theme_icon("Remove", "EditorIcons"), "Remove", 3)
 	
 	command_name.text = command.cmd_name
+	
 	_populate_field_container()
+	field_container.visible = command.visible
 
 func _populate_field_container() -> void:
 	for prop_info in command.get_properties():
@@ -59,6 +61,8 @@ func _populate_field_container() -> void:
 
 func _on_hide_btn_toggled(button_pressed):
 	field_container.visible = !button_pressed
+	command.visible = !button_pressed
+	command_modified.emit()
 
 func _on_panel_container_gui_input(event):
 	# right click event opens a pop up with some actions

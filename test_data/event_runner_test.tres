@@ -9,14 +9,17 @@
 [sub_resource type="Resource" id="Resource_hxg2w"]
 script = ExtResource("1_3uqq6")
 contents = "Starting Event Runner Test"
+visible = true
 
 [sub_resource type="Resource" id="Resource_5jpuo"]
 script = ExtResource("1_3uqq6")
 contents = "Waiting 20 frames..."
+visible = true
 
 [sub_resource type="Resource" id="Resource_kb1a5"]
 script = ExtResource("2_qi0t3")
 frame_count = 20
+visible = true
 
 [sub_resource type="Resource" id="Resource_34hx5"]
 script = ExtResource("2_ocgox")
@@ -25,50 +28,62 @@ var a = 0
 while a < 4:
 	print(a)
 	a += 1"
+visible = true
 
 [sub_resource type="Resource" id="Resource_4x34i"]
 script = ExtResource("4_nodtk")
 contents = "below are a bunch of comments that shouldn't waste any frames"
+visible = true
 
 [sub_resource type="Resource" id="Resource_ji7m3"]
 script = ExtResource("4_nodtk")
 contents = ""
+visible = false
 
 [sub_resource type="Resource" id="Resource_jiw7e"]
 script = ExtResource("4_nodtk")
 contents = ""
+visible = false
 
 [sub_resource type="Resource" id="Resource_xvn80"]
 script = ExtResource("4_nodtk")
 contents = ""
+visible = false
 
 [sub_resource type="Resource" id="Resource_k5fj2"]
 script = ExtResource("4_nodtk")
 contents = ""
+visible = false
 
 [sub_resource type="Resource" id="Resource_ly7i4"]
 script = ExtResource("4_nodtk")
 contents = ""
+visible = false
 
 [sub_resource type="Resource" id="Resource_k474w"]
 script = ExtResource("4_nodtk")
 contents = ""
+visible = false
 
 [sub_resource type="Resource" id="Resource_vfe2c"]
 script = ExtResource("4_nodtk")
 contents = ""
+visible = false
 
 [sub_resource type="Resource" id="Resource_p6lru"]
 script = ExtResource("4_nodtk")
 contents = ""
+visible = false
 
 [sub_resource type="Resource" id="Resource_sqcy6"]
 script = ExtResource("4_nodtk")
 contents = ""
+visible = false
 
 [sub_resource type="Resource" id="Resource_624y2"]
 script = ExtResource("1_3uqq6")
 contents = "This should display immediately after the script finishes"
+visible = true
 
 [resource]
 script = ExtResource("3_bsrod")
