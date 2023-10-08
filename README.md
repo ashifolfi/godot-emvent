@@ -1,7 +1,7 @@
 # eMVent
 A highly extendable, easy to use RPG Maker inspired event system for Godot.
 
-**WARNING: This addon is currently in a Proof Of Concept state. It's not recommended to be used in a production environment and is missing many features still.**
+**WARNING: This addon is currently in the experimental phase. Thing will change rapidly as features are fleshed out and added.**
 
 Features:
 - An easy to use event sheet styled editor that adapts to custom commands easily
