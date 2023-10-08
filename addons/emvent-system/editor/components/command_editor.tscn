@@ -69,9 +69,6 @@ vertical_alignment = 1
 layout_mode = 2
 
 [node name="RCMenu" type="PopupMenu" parent="."]
-item_count = 1
-item_0/text = ""
-item_0/id = 0
 
 [connection signal="gui_input" from="HBoxContainer/PanelContainer/Layout/PanelContainer" to="." method="_on_panel_container_gui_input"]
 [connection signal="toggled" from="HBoxContainer/PanelContainer/Layout/PanelContainer/HBoxContainer/hideBtn" to="." method="_on_hide_btn_toggled"]

@@ -19,8 +19,9 @@ signal command_modified
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	if command == null:
-		push_warning("No command was provided before ready! Destroying element...")
-		queue_free()
+		# this error checking doubles as a method to prevent the scene
+		# from being modified by it's own script in the editor
+		push_warning("If you are editing the scene for this component you may ignore this.\nNo command was provided before ready! bad resource data?")
 		return
 	
 	# set editor icon textures
@@ -45,6 +46,7 @@ func _ready():
 	
 	_populate_field_container()
 	field_container.visible = command.visible
+	hide_btn.button_pressed = !command.visible
 
 func set_color(color: Color):
 	$HBoxContainer/ColorRect.color = color
