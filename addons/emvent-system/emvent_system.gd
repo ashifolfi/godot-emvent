@@ -8,7 +8,7 @@ extends Node
 var event_data: Emvent
 var event_cmd_index = 0
 
-func _process(delta):
+func _physics_process(_delta):
 	if event_data != null:
 		_process_event()
 
