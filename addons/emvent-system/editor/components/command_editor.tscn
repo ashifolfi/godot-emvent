@@ -18,7 +18,6 @@ border_color = Color(0.25, 0.265625, 0.296875, 1)
 font_size = 10
 
 [node name="CommandEditor" type="PanelContainer"]
-custom_minimum_size = Vector2(400, 50)
 script = ExtResource("1_g3iii")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
