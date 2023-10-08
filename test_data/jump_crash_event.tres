@@ -15,12 +15,12 @@ script = ExtResource("2_kc4it")
 contents = "3,2,1 crash time go!"
 visible = true
 
-[sub_resource type="Resource" id="Resource_eis0x"]
+[sub_resource type="Resource" id="Resource_uonin"]
 script = ExtResource("3_ska4y")
-label = "thiswillcrash"
+label = "thiscausesanerror"
 visible = true
 
 [resource]
 script = ExtResource("4_bbuu7")
 name = "Jump Crash Event"
-commands = [SubResource("Resource_t6hbs"), SubResource("Resource_elw6w"), SubResource("Resource_eis0x")]
+commands = [SubResource("Resource_t6hbs"), SubResource("Resource_elw6w"), SubResource("Resource_uonin")]

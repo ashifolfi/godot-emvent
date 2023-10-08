@@ -140,8 +140,15 @@ func _on_drag_overlay_gui_event(event):
 						final_index = child.get_index()
 					
 					break
-			
-			move_command_entry(drag_index, final_index)
+			# if we're still null then we're either above or below everything.
+			# if we're above everything... we can't detect that. So just assume below.
+			if final_index == null:
+					final_index = command_list.get_child_count() - 1
+
+			# if we're already at the point we're moving to don't bother moving
+			# since it'd just be a waste of execution time
+			if drag_index != final_index:
+				move_command_entry(drag_index, final_index)
 			
 			drag_index = null
 			drag_overlay.visible = false
