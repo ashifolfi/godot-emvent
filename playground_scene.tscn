@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dophvuth1hppl"]
+
+[ext_resource type="Theme" uid="uid://duunstk6iwf3p" path="res://editor_theme.tres" id="1_qkffc"]
+[ext_resource type="PackedScene" uid="uid://df6xaugct5rem" path="res://addons/emvent-system/editor/views/main_view.tscn" id="2_sfat3"]
+
+[node name="Playground Scene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_qkffc")
+
+[node name="Control" parent="." instance=ExtResource("2_sfat3")]
+layout_mode = 0
+anchors_preset = 0
