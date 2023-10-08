@@ -22,6 +22,10 @@ func _ready() -> void:
 	menu_file.add_separator("", 2)
 	menu_file.add_item("Save", 3, KEY_MASK_CTRL|KEY_S)
 	menu_file.add_item("Save As", 4, KEY_MASK_CTRL|KEY_MASK_SHIFT|KEY_S)
+	
+	# default to save and save as being disabled
+	menu_file.set_item_disabled(3, true)
+	menu_file.set_item_disabled(4, true)
 
 func create_tab(evdata: Emvent, path: String = ""):
 	var new_tab = load("res://addons/emvent-system/editor/views/event_file_view.tscn").instantiate()
@@ -40,6 +44,7 @@ func create_tab(evdata: Emvent, path: String = ""):
 	tab_bar.add_tab(new_tab.passage.name)
 	# refresh tabs and child element visibility
 	_on_tab_bar_tab_changed(tab_bar.current_tab)
+	_update_menu_status()
 
 # Menu Bar functions
 func _on_new_file() -> void:
@@ -52,6 +57,14 @@ func _on_event_saved() -> void:
 func _on_event_modified() -> void:
 	var event_data = tab_box.get_child(tab_bar.current_tab).passage
 	tab_bar.set_tab_title(tab_bar.current_tab, event_data.name + "(*)")
+
+func _update_menu_status() -> void:
+	if tab_box.get_child_count() == 0:
+		menu_file.set_item_disabled(3, true)
+		menu_file.set_item_disabled(4, true)
+	else:
+		menu_file.set_item_disabled(3, false)
+		menu_file.set_item_disabled(4, false)
 
 # Helper functions
 func get_current_tab():
@@ -74,6 +87,7 @@ func _on_tab_bar_tab_close_pressed(tab):
 	tab_element.queue_free()
 	
 	tab_bar.remove_tab(tab)
+	_update_menu_status()
 
 func _on_confirm_dialog_action(action: StringName) -> void:
 	if action == "save":
@@ -88,6 +102,7 @@ func _on_confirm_dialog_action(action: StringName) -> void:
 	tab.queue_free()
 	
 	tab_bar.remove_tab(tab_bar.current_tab)
+	_update_menu_status()
 
 func _save_file_pressed(save_as: bool = false):
 	if save_as or get_current_tab().path.is_empty():
