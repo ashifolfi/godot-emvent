@@ -7,10 +7,21 @@ var open_files: Array
 @onready var tab_box = $VBoxContainer/PanelContainer/VBoxContainer/TabHolder
 @onready var dialog_fconf = $UnsavedFileConfirmationDialog
 
+@onready var menu_file = $VBoxContainer/MenuBar/File
+@onready var menu_help = $VBoxContainer/MenuBar/Help
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	# only display a close button on the active tab
 	tab_bar.tab_close_display_policy = tab_bar.CLOSE_BUTTON_SHOW_ACTIVE_ONLY
+	
+	# File Menu
+	menu_file.clear()
+	menu_file.add_item("New Event", 0, KEY_MASK_CTRL|KEY_N)
+	menu_file.add_item("Open Event", 1, KEY_MASK_CTRL|KEY_O)
+	menu_file.add_separator("", 2)
+	menu_file.add_item("Save", 3, KEY_MASK_CTRL|KEY_S)
+	menu_file.add_item("Save As", 4, KEY_MASK_CTRL|KEY_MASK_SHIFT|KEY_S)
 
 func create_tab(evdata: Emvent, path: String = ""):
 	var new_tab = load("res://addons/emvent-system/editor/views/event_file_view.tscn").instantiate()
@@ -58,8 +69,6 @@ func _on_tab_bar_tab_close_pressed(tab):
 		dialog_fconf.popup_centered()
 		return
 	
-	print("Closing tab...")
-	
 	var tab_element = tab_box.get_child(tab)
 	tab_box.remove_child(tab_element)
 	tab_element.queue_free()
@@ -68,13 +77,11 @@ func _on_tab_bar_tab_close_pressed(tab):
 
 func _on_confirm_dialog_action(action: StringName) -> void:
 	if action == "save":
-		#print("Saving Event...")
 		get_current_tab().save_passage()
 	
 	# HACK?: this closes the current tab instead of the requested tab.
 	# this isn't much of an issue though as the close button only appears on
 	# the currently active tab meaning this should always close the right one.
-	#print("Closing tab...")
 	
 	var tab = get_current_tab()
 	tab_box.remove_child(tab)
@@ -98,8 +105,8 @@ func _on_file_menu_index_pressed(index):
 	match index:
 		0: _on_new_file()
 		1: $OpenFileDialog.popup_centered()
-		2: _save_file_pressed(get_current_tab().path.is_empty())
-		3: _save_file_pressed(true)
+		3: _save_file_pressed(get_current_tab().path.is_empty())
+		4: _save_file_pressed(true)
 		_: print("Not Implemented.")
 
 func _on_help_menu_index_pressed(index):

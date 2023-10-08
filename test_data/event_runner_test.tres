@@ -8,7 +8,7 @@
 
 [sub_resource type="Resource" id="Resource_hxg2w"]
 script = ExtResource("1_3uqq6")
-contents = "Starting Event Runner Test..."
+contents = "Starting Event Runner Test"
 
 [sub_resource type="Resource" id="Resource_5jpuo"]
 script = ExtResource("1_3uqq6")
