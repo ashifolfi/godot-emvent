@@ -20,9 +20,12 @@ func _ready():
 	var category_items: Dictionary = {}
 	cmd_tree.hide_root = true
 	
-	# this is absolutely messy holy shit
+	# TODO: possibly move this elsewhere?
 	for _class in ProjectSettings.get_global_class_list():
-		if _class["base"] != "EmventCommand":
+		if _class["class"] == "EmventNoExecCommand":
+			continue # don't grab the noexeccommand class actually
+		if (_class["base"] != "EmventCommand" 
+		and _class["base"] != "EmventNoExecCommand"):
 			continue
 		
 		var script: GDScript = load(_class["path"])

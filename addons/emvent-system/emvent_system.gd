@@ -13,8 +13,24 @@ func _process(delta):
 		_process_event()
 
 func _process_event():
-	# skip over comment commands without wasting tics
-	while event_data.commands[event_cmd_index] is CommentEventCommand:
+	# special condition for jump commands
+	if event_data.commands[event_cmd_index] is JumpEventCommand:
+		for i in range(0, event_data.commands.size()):
+			var command = event_data.commands[i]
+			
+			if (command is LabelEventCommand 
+			and command.name == event_data.commands[event_cmd_index].label):
+				event_cmd_index = i
+				# TODO: do we want to wait one frame after a jump or start execution immediately?
+				return
+		
+		# if we make it out of the for loop then something went wrong
+		push_error("Event Execution Error: Attempted to jump to label that doesn't exist!")
+		event_data = null
+		return
+	
+	# skip over no execution commands without wasting tics
+	while event_data.commands[event_cmd_index] is EmventNoExecCommand:
 		event_cmd_index += 1
 		if event_cmd_index >= event_data.commands.size():
 			event_data = null

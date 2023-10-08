@@ -1,6 +1,6 @@
 @tool
 class_name CommentEventCommand 
-extends EmventCommand
+extends EmventNoExecCommand
 
 @export var contents: String = ""
 

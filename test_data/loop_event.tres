@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="Emvent" load_steps=10 format=3 uid="uid://yiptk3ba8xrm"]
+
+[ext_resource type="Script" path="res://addons/emvent-system/commands/comment_command.gd" id="1_qw5l5"]
+[ext_resource type="Script" path="res://addons/emvent-system/commands/label_command.gd" id="2_j72in"]
+[ext_resource type="Script" path="res://addons/emvent-system/commands/print_command.gd" id="3_sl1n8"]
+[ext_resource type="Script" path="res://addons/emvent-system/commands/jump_command.gd" id="4_ura8u"]
+[ext_resource type="Script" path="res://addons/emvent-system/event_resource.gd" id="5_5vg00"]
+
+[sub_resource type="Resource" id="Resource_t6hbs"]
+script = ExtResource("1_qw5l5")
+contents = "This event has a jump and a label causing an infinite loop"
+visible = true
+
+[sub_resource type="Resource" id="Resource_kulsl"]
+script = ExtResource("2_j72in")
+name = "loopa"
+visible = true
+
+[sub_resource type="Resource" id="Resource_elw6w"]
+script = ExtResource("3_sl1n8")
+contents = "This goes forever!"
+visible = true
+
+[sub_resource type="Resource" id="Resource_eis0x"]
+script = ExtResource("4_ura8u")
+label = "loopa"
+visible = true
+
+[resource]
+script = ExtResource("5_5vg00")
+name = "Loop Event"
+commands = [SubResource("Resource_t6hbs"), SubResource("Resource_kulsl"), SubResource("Resource_elw6w"), SubResource("Resource_eis0x")]
