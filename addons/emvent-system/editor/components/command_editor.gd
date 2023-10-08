@@ -7,6 +7,11 @@ extends PanelContainer
 @onready var command_name = $HBoxContainer/PanelContainer/Layout/PanelContainer/HBoxContainer/CommandName
 @onready var hide_btn: TextureButton = $HBoxContainer/PanelContainer/Layout/PanelContainer/HBoxContainer/hideBtn
 
+var category_colors = {
+	"Utility": Color.DIM_GRAY,
+	"Flow Control": Color.RED,
+}
+
 signal move_command
 signal remove_command
 signal command_modified
@@ -31,8 +36,18 @@ func _ready():
 	
 	command_name.text = command.cmd_name
 	
+	if command is CommentEventCommand:
+		set_color(Color.WEB_GREEN)
+	elif category_colors.has(command.cmd_category):
+		set_color(category_colors[command.cmd_category])
+	else:
+		set_color(Color.WHITE)
+	
 	_populate_field_container()
 	field_container.visible = command.visible
+
+func set_color(color: Color):
+	$HBoxContainer/ColorRect.color = color
 
 func _populate_field_container() -> void:
 	for prop_info in command.get_properties():
@@ -94,7 +109,7 @@ func _create_line_edit(property: String):
 func _create_multi_line_edit(property: String):
 	var prop_textedit = TextEdit.new()
 	
-	prop_textedit.custom_minimum_size = Vector2(0, 72)
+	prop_textedit.scroll_fit_content_height = true
 	prop_textedit.text = command.get(property)
 	prop_textedit.text_changed.connect(func(): 
 		command.set(property, prop_textedit.text)

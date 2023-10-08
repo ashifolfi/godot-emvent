@@ -8,10 +8,14 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iwjbo"]
 bg_color = Color(0.25, 0.265625, 0.296875, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.25, 0.265625, 0.296875, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_78jgh"]
-outline_size = 5
-outline_color = Color(0, 0, 0, 1)
+font_size = 10
 
 [node name="CommandEditor" type="PanelContainer"]
 custom_minimum_size = Vector2(400, 50)
@@ -51,7 +55,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_iwjbo")
 layout_mode = 2
 
 [node name="hideBtn" type="TextureButton" parent="HBoxContainer/PanelContainer/Layout/PanelContainer/HBoxContainer"]
-custom_minimum_size = Vector2(32, 32)
+custom_minimum_size = Vector2(18, 18)
 layout_mode = 2
 toggle_mode = true
 stretch_mode = 5
@@ -60,6 +64,7 @@ stretch_mode = 5
 layout_mode = 2
 text = "Command"
 label_settings = SubResource("LabelSettings_78jgh")
+vertical_alignment = 1
 
 [node name="FieldContainer" type="VBoxContainer" parent="HBoxContainer/PanelContainer/Layout"]
 layout_mode = 2
