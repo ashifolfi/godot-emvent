@@ -1,3 +1,4 @@
+@tool
 class_name ScriptEventCommand extends EmventCommand
 
 # Place your parameters here formatted like so

@@ -1,6 +1,6 @@
 # meta-description: Base groundwork for a new event command
 # meta-default: true
-# meta-space-indent: 4
+@tool
 # Uncomment and change this class name for your command to show up!
 # class_name NewEventCommand 
 extends EmventCommand
