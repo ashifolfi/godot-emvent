@@ -39,6 +39,8 @@ func _ready():
 	drag_overlay.visible = false
 
 func save_passage():
+	# compile the jump points for branch statements
+	
 	var error = ResourceSaver.save(passage, path, ResourceSaver.FLAG_NONE)
 	# TODO: there might be a better way to do this
 	if error != OK:

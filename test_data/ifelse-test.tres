@@ -1,0 +1,80 @@
+[gd_resource type="Resource" script_class="Emvent" load_steps=23 format=3 uid="uid://p11i8pyax7tw"]
+
+[ext_resource type="Script" path="res://addons/emvent-system/commands/print_command.gd" id="1_pt87f"]
+[ext_resource type="Script" path="res://addons/emvent-system/commands/label_command.gd" id="2_51oc4"]
+[ext_resource type="Script" path="res://addons/emvent-system/commands/if-command.gd" id="3_obvky"]
+[ext_resource type="Script" path="res://addons/emvent-system/commands/else-command.gd" id="4_dcba1"]
+[ext_resource type="Script" path="res://addons/emvent-system/commands/jump_command.gd" id="5_7ot3f"]
+[ext_resource type="Script" path="res://addons/emvent-system/commands/endif-command.gd" id="6_qn7cb"]
+[ext_resource type="Script" path="res://addons/emvent-system/commands/wait_frame_command.gd" id="7_n8x7e"]
+[ext_resource type="Script" path="res://addons/emvent-system/commands/script_command.gd" id="7_xlyuf"]
+[ext_resource type="Script" path="res://addons/emvent-system/event_resource.gd" id="8_l3dfh"]
+
+[sub_resource type="Resource" id="Resource_golb6"]
+script = ExtResource("1_pt87f")
+contents = "Testing if statement"
+visible = true
+
+[sub_resource type="Resource" id="Resource_7chkm"]
+script = ExtResource("2_51oc4")
+name = "ifstate"
+visible = true
+
+[sub_resource type="Resource" id="Resource_njeyd"]
+script = ExtResource("3_obvky")
+condition = "SV.a == 2"
+visible = true
+
+[sub_resource type="Resource" id="Resource_c0p4m"]
+script = ExtResource("1_pt87f")
+contents = "It returned true!"
+visible = true
+
+[sub_resource type="Resource" id="Resource_urcsk"]
+script = ExtResource("4_dcba1")
+visible = true
+
+[sub_resource type="Resource" id="Resource_j3osx"]
+script = ExtResource("1_pt87f")
+contents = "It returned false!"
+visible = true
+
+[sub_resource type="Resource" id="Resource_m8brs"]
+script = ExtResource("5_7ot3f")
+label = "end"
+visible = true
+
+[sub_resource type="Resource" id="Resource_02h5y"]
+script = ExtResource("6_qn7cb")
+visible = true
+
+[sub_resource type="Resource" id="Resource_stqyl"]
+script = ExtResource("1_pt87f")
+contents = "Wait a bit before continuing"
+visible = true
+
+[sub_resource type="Resource" id="Resource_xu6uu"]
+script = ExtResource("7_n8x7e")
+frame_count = 20
+visible = true
+
+[sub_resource type="Resource" id="Resource_4qxri"]
+script = ExtResource("7_xlyuf")
+expression = "print(\"changing variable to falsify statement\")
+SV.a = 4"
+visible = true
+
+[sub_resource type="Resource" id="Resource_3nspa"]
+script = ExtResource("5_7ot3f")
+label = "ifstate"
+visible = true
+
+[sub_resource type="Resource" id="Resource_85k7u"]
+script = ExtResource("2_51oc4")
+name = "end"
+visible = true
+
+[resource]
+script = ExtResource("8_l3dfh")
+name = "IfElse Test"
+commands = [SubResource("Resource_golb6"), SubResource("Resource_7chkm"), SubResource("Resource_njeyd"), SubResource("Resource_c0p4m"), SubResource("Resource_urcsk"), SubResource("Resource_j3osx"), SubResource("Resource_m8brs"), SubResource("Resource_02h5y"), SubResource("Resource_stqyl"), SubResource("Resource_xu6uu"), SubResource("Resource_4qxri"), SubResource("Resource_3nspa"), SubResource("Resource_85k7u")]

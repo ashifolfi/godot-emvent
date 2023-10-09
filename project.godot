@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 EmventSystem="*res://addons/emvent-system/emvent_system.gd"
+SV="*res://test_data/singleton_variables.gd"
 
 [display]
 
