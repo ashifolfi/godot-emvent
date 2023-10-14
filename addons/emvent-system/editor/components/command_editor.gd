@@ -49,6 +49,9 @@ func _ready():
 	field_container.visible = command.visible
 	hide_btn.button_pressed = !command.visible
 
+func set_indentation_value(indent_count: int):
+	$HBoxContainer/Indentation.add_theme_constant_override("separation", indent_count * 32)
+
 func set_color(color: Color):
 	$HBoxContainer/ColorRect.color = color
 

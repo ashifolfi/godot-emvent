@@ -24,7 +24,7 @@ script = ExtResource("1_g3iii")
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="VSeparator" type="VSeparator" parent="HBoxContainer"]
+[node name="Indentation" type="VSeparator" parent="HBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 0
 theme_override_styles/separator = SubResource("StyleBoxEmpty_27j5p")

@@ -35,6 +35,7 @@ func _ready():
 		command_edit_instance.move_command.connect(_on_command_move_requested)
 		command_edit_instance.remove_command.connect(_on_command_remove_requested)
 		command_edit_instance.drag_started.connect(_on_command_drag_begin)
+	_update_command_list_indentation()
 	
 	drag_overlay.visible = false
 
@@ -67,6 +68,28 @@ func move_command_entry(index, new_index):
 	
 	is_modified = true
 	file_modified.emit()
+	_update_command_list_indentation()
+
+func _update_command_list_indentation():
+	var if_count = 0 
+	
+	for command in command_list.get_children():
+		command.set_indentation_value(if_count)
+		
+		if command.command is IfEventCommand:
+			if_count += 1
+		
+		# not entirely sure how to handle this actually
+		if command.command is ElseEventCommand:
+			command.set_indentation_value(if_count - 1)
+		
+		if command.command is EndIfEventCommand:
+			if_count -= 1
+			command.set_indentation_value(if_count)
+		
+		# just in case you did a silly
+		if if_count < 0:
+			if_count = 0
 
 # connections
 func _on_passage_name_change(new_name):
